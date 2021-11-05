@@ -2468,7 +2468,6 @@ public class SqlCodeGenerator implements Mutable {
                     }
                 }
             }
-            final boolean latestByHasOnlyOneColumn = listColumnFilterA.size() == 1;
 
             final String tableName = reader.getTableName();
 
@@ -2797,7 +2796,7 @@ public class SqlCodeGenerator implements Mutable {
                 );
             }
 
-            if (latestByHasOnlyOneColumn && myMeta.isColumnIndexed(listColumnFilterA.getColumnIndexFactored(0))) {
+            if (listColumnFilterA.size() == 1 && myMeta.isColumnIndexed(listColumnFilterA.getColumnIndexFactored(0))) {
                 return new LatestByAllIndexedFilteredRecordCursorFactory(
                         myMeta,
                         configuration,
